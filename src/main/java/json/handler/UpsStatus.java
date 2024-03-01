@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 public class UpsStatus {
 
     @SerializedName("ups_adv_output_load")
-    private int advOutputLoad;
+    private int outputLoad;
 
     @SerializedName("ups_adv_battery_temperature")
-    private int advBatteryTemperature;
+    private int batteryTemperature;
 
     @SerializedName("@timestamp")
     private LocalDateTime timestamp;
@@ -26,9 +26,14 @@ public class UpsStatus {
     @SerializedName("host")
     private String host;
 
+    private transient boolean isHostCorrect = true;
+
     @SerializedName("ups_adv_battery_run_time_remaining")
-    private int advBatteryRunTimeRemaining;
+    private int batteryRunTimeRemaining;
+    private transient boolean isBatteryRunTimeRemainingCorrect = true;
 
     @SerializedName("ups_adv_output_voltage")
-    private int advOutputVoltage;
+    private int outputVoltage;
+
+    private transient boolean isOutputVoltageCorrect = true;
 }
