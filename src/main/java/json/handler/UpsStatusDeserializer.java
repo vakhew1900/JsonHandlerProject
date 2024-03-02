@@ -24,20 +24,14 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         try{
             upsStatus.setOutputLoad(jsonObject.get(UpsStatus.UPS_ADV_OUTPUT_LOAD).getAsInt());
         }
-        catch (UnsupportedOperationException e){
-            logger.warn(e);
-        }
-        catch (NullPointerException e){
+        catch (RuntimeException e){
             logger.warn(e);
         }
 
         try{
             upsStatus.setBatteryTemperature(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_TEMPERATURE).getAsInt());
         }
-        catch (UnsupportedOperationException e){
-            logger.warn(e);
-        }
-        catch (NullPointerException e){
+        catch (RuntimeException e){
             logger.warn(e);
         }
 
@@ -45,34 +39,22 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
             upsStatus.setTimestamp(LocalDateTime.parse(jsonObject.get(UpsStatus.TIMESTAMP).getAsString(), dateTimeFormatter));
         }
-        catch (UnsupportedOperationException e){
-            logger.warn(e);
-        }
-        catch (NullPointerException e){
+        catch (RuntimeException e){
             logger.warn(e);
         }
 
         try{
             upsStatus.setHost(jsonObject.get(UpsStatus.HOST).getAsString());
         }
-        catch (UnsupportedOperationException e){
+        catch (RuntimeException e){
             upsStatus.setHostCorrect(false);
             logger.warn(e);
         }
-        catch (NullPointerException e){
-            upsStatus.setHostCorrect(false);
-            logger.warn(e);
-        }
-
 
         try {
             upsStatus.setBatteryRunTimeRemaining(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_RUN_TIME_REMAINING).getAsInt());
         }
-        catch (UnsupportedOperationException e){
-            upsStatus.setBatteryRunTimeRemainingCorrect(false);
-            logger.warn(e);
-        }
-        catch (NullPointerException e){
+        catch (RuntimeException e){
             upsStatus.setBatteryRunTimeRemainingCorrect(false);
             logger.warn(e);
         }
@@ -80,11 +62,7 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         try {
             upsStatus.setOutputVoltage(jsonObject.get(UpsStatus.UPS_ADV_OUTPUT_VOLTAGE).getAsInt());
         }
-        catch (UnsupportedOperationException e){
-            upsStatus.setOutputVoltageCorrect(false);
-            logger.warn(e);
-        }
-        catch (NullPointerException e){
+        catch (RuntimeException e){
             upsStatus.setOutputVoltageCorrect(false);
             logger.warn(e);
         }

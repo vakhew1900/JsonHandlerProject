@@ -1,6 +1,5 @@
 package json.handler;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,4 +10,6 @@ public class UpsStatusUtils {
         long sum = batteryRunTimeRemaingList.stream().mapToLong(n -> n).sum();
         return (double) sum / batteryRunTimeRemaingList.size();
     }
+
+
 }
