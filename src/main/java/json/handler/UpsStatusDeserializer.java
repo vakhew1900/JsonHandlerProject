@@ -1,6 +1,8 @@
 package json.handler;
 
 import com.google.gson.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
@@ -10,6 +12,8 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
     @Override
     public UpsStatus deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         UpsStatus upsStatus = new UpsStatus();
+
+        Logger logger =  LogManager.getLogger(UpsStatusDeserializer.class);
 
         if(!jsonElement.isJsonObject()){
             throw new JsonParseException("JsonElement must be JsonObject");
@@ -21,13 +25,14 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setOutputLoad(jsonObject.get(UpsStatus.UPS_ADV_OUTPUT_LOAD).getAsInt());
         }
         catch (UnsupportedOperationException e){
+            logger.warn(e);
         }
 
         try{
             upsStatus.setBatteryTemperature(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_TEMPERATURE).getAsInt());
         }
         catch (UnsupportedOperationException e){
-            // empty;
+            logger.warn(e);
         }
 
         try{
@@ -35,7 +40,7 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setTimestamp(LocalDateTime.parse(jsonObject.get(UpsStatus.TIMESTAMP).getAsString(), dateTimeFormatter));
         }
         catch (UnsupportedOperationException e){
-            // empty;
+            logger.warn(e);
         }
 
         try{
@@ -43,6 +48,7 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         }
         catch (UnsupportedOperationException e){
             upsStatus.setHostCorrect(false);
+            logger.warn(e);
         }
 
         try {
@@ -50,6 +56,7 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         }
         catch (UnsupportedOperationException e){
             upsStatus.setBatteryRunTimeRemainingCorrect(false);
+            logger.warn(e);
         }
 
         try {
@@ -57,6 +64,7 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         }
         catch (UnsupportedOperationException e){
             upsStatus.setOutputVoltageCorrect(false);
+            logger.warn(e);
         }
 
         return upsStatus;
