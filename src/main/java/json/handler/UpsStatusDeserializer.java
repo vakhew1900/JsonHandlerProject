@@ -27,11 +27,17 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         catch (UnsupportedOperationException e){
             logger.warn(e);
         }
+        catch (NullPointerException e){
+            logger.warn(e);
+        }
 
         try{
             upsStatus.setBatteryTemperature(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_TEMPERATURE).getAsInt());
         }
         catch (UnsupportedOperationException e){
+            logger.warn(e);
+        }
+        catch (NullPointerException e){
             logger.warn(e);
         }
 
@@ -42,6 +48,9 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
         catch (UnsupportedOperationException e){
             logger.warn(e);
         }
+        catch (NullPointerException e){
+            logger.warn(e);
+        }
 
         try{
             upsStatus.setHost(jsonObject.get(UpsStatus.HOST).getAsString());
@@ -50,6 +59,11 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setHostCorrect(false);
             logger.warn(e);
         }
+        catch (NullPointerException e){
+            upsStatus.setHostCorrect(false);
+            logger.warn(e);
+        }
+
 
         try {
             upsStatus.setBatteryRunTimeRemaining(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_RUN_TIME_REMAINING).getAsInt());
@@ -58,11 +72,19 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setBatteryRunTimeRemainingCorrect(false);
             logger.warn(e);
         }
+        catch (NullPointerException e){
+            upsStatus.setBatteryRunTimeRemainingCorrect(false);
+            logger.warn(e);
+        }
 
         try {
             upsStatus.setOutputVoltage(jsonObject.get(UpsStatus.UPS_ADV_OUTPUT_VOLTAGE).getAsInt());
         }
         catch (UnsupportedOperationException e){
+            upsStatus.setOutputVoltageCorrect(false);
+            logger.warn(e);
+        }
+        catch (NullPointerException e){
             upsStatus.setOutputVoltageCorrect(false);
             logger.warn(e);
         }
