@@ -47,7 +47,6 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setHost(jsonObject.get(UpsStatus.HOST).getAsString());
         }
         catch (RuntimeException e){
-            upsStatus.setHostCorrect(false);
             logger.warn(e);
         }
 
@@ -55,7 +54,6 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setBatteryRunTimeRemaining(jsonObject.get(UpsStatus.UPS_ADV_BATTERY_RUN_TIME_REMAINING).getAsInt());
         }
         catch (RuntimeException e){
-            upsStatus.setBatteryRunTimeRemainingCorrect(false);
             logger.warn(e);
         }
 
@@ -63,7 +61,6 @@ public class UpsStatusDeserializer implements JsonDeserializer<UpsStatus> {
             upsStatus.setOutputVoltage(jsonObject.get(UpsStatus.UPS_ADV_OUTPUT_VOLTAGE).getAsInt());
         }
         catch (RuntimeException e){
-            upsStatus.setOutputVoltageCorrect(false);
             logger.warn(e);
         }
 

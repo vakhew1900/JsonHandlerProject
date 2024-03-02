@@ -21,25 +21,21 @@ public class UpsStatus {
 
 
     @SerializedName(UPS_ADV_OUTPUT_LOAD)
-    private int outputLoad;
+    private Integer outputLoad = null;
 
     @SerializedName(UPS_ADV_BATTERY_TEMPERATURE)
-    private int batteryTemperature;
+    private Integer batteryTemperature = null;
 
     @SerializedName(TIMESTAMP)
-    private LocalDateTime timestamp;
+    private LocalDateTime timestamp = null;
 
     @SerializedName(HOST)
-    private String host;
-
-    private transient boolean isHostCorrect = true;
+    private String host = null;
 
     @SerializedName(UPS_ADV_BATTERY_RUN_TIME_REMAINING)
-    private int batteryRunTimeRemaining;
-    private transient boolean isBatteryRunTimeRemainingCorrect = true;
+    private Integer batteryRunTimeRemaining = null;
 
     @SerializedName(UPS_ADV_OUTPUT_VOLTAGE)
-    private int outputVoltage;
+    private Integer outputVoltage;
 
-    private transient boolean isOutputVoltageCorrect = true;
 }
