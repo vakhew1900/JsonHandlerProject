@@ -10,13 +10,6 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
 
-//        String fileName = "E:\\JsonHandlerProject\\src\\test\\example\\testData.json";
-//        List<UpsStatus> list = new UpsStatusParser().parse(fileName);
-//        System.out.println(list.size());
-//        System.out.println("avg =" + UpsStatusUtils.avg(list));
-//        System.out.println("max = " +UpsStatusUtils.max(list));
-//        System.out.println("values = " + UpsStatusUtils.values(list));
-
         try {
             checkArgs(args);
             List<UpsStatus> list = new UpsStatusParser().parse(args[1]);
@@ -33,19 +26,9 @@ public class Main {
             throw new RuntimeException("program should have 2 arguments: <functionName> <fileName>");
         }
 
-        boolean isExistsFuntions = true;
-
-        if (UpsStatusUtils.VALUES.equals(args[0])) {
-            isExistsFuntions = false;
-        }
-
-        if (UpsStatusUtils.MAX.equals(args[0])) {
-            isExistsFuntions = false;
-        }
-
-        if (UpsStatusUtils.AVG.equals(args[0])) {
-            isExistsFuntions = false;
-        }
+        boolean isExistsFuntions = UpsStatusUtils.VALUES.equals(args[0]);
+        isExistsFuntions = isExistsFuntions || UpsStatusUtils.MAX.equals(args[0]);
+        isExistsFuntions = isExistsFuntions || UpsStatusUtils.AVG.equals(args[0]);
 
         if (!isExistsFuntions) {
             throw new IllegalArgumentException("no function with name \"" + args[0] + "\"");
