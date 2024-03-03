@@ -1,4 +1,4 @@
-package org.example;
+package org.main;
 
 import json.handler.UpsStatus;
 import json.handler.UpsStatusParser;
