@@ -1,0 +1,10 @@
+[
+
+  {
+    "ups_adv_output_load": 6,
+    "ups_adv_battery_temperature": 23,
+    "@timestamp": "2021-04-20T15:34:58.290Z",
+    "host": "192.168.11.9",
+    "ups_adv_battery_run_time_remaining": 528000,
+    "ups_adv_output_voltage": 234
+  },

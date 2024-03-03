@@ -1,0 +1,8 @@
+[{
+  "ups_adv_output_load": 6,
+  "ups_adv_battery_temperature": "fff",
+  "@timestamp": "2021-04-20T15:34:58.290Z",
+  "ups_adv_battery_run_time_remaining": 528000,
+  "ups_adv_output_voltage": "fff"
+}
+]
