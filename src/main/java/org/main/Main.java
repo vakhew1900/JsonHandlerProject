@@ -1,6 +1,7 @@
 package org.main;
 
 import json.handler.UpsStatus;
+import json.handler.UpsStatusDeserializer;
 import json.handler.UpsStatusParser;
 import json.handler.UpsStatusUtils;
 
@@ -13,6 +14,10 @@ public class Main {
         try {
             checkArgs(args);
             List<UpsStatus> list = new UpsStatusParser().parse(args[1]);
+            if (UpsStatusDeserializer.getFieldErrorCnt() > 0) {
+                System.out.println(UpsStatusDeserializer.getFieldErrorCnt() + " fields have incorrect data format");
+            }
+
             makeOperation(args[0], list);
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
@@ -38,7 +43,7 @@ public class Main {
     public static void makeOperation(String functionName, List<UpsStatus> upsStatuses) {
 
         String result = "result: ";
-        switch (functionName){
+        switch (functionName) {
             case UpsStatusUtils.AVG:
                 double avg = UpsStatusUtils.avg(upsStatuses);
                 result += avg;
@@ -57,8 +62,3 @@ public class Main {
     }
 }
 
-/*
-avg =412712.827696618
-max = 241
-values = [192.168.10.8, 192.168.11.9]
- */
