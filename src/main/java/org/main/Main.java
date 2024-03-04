@@ -14,11 +14,13 @@ public class Main {
         try {
             checkArgs(args);
             List<UpsStatus> list = new UpsStatusParser().parse(args[1]);
+
             if (UpsStatusDeserializer.getFieldErrorCnt() > 0) {
                 System.out.println(UpsStatusDeserializer.getFieldErrorCnt() + " fields have incorrect data format");
             }
 
             makeOperation(args[0], list);
+
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }

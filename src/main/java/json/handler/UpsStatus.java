@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class UpsStatus {
 
     protected static final String UPS_ADV_OUTPUT_LOAD = "ups_adv_output_load";
