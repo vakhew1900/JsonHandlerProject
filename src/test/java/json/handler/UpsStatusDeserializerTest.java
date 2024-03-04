@@ -3,6 +3,7 @@ package json.handler;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.lang.reflect.Modifier;
@@ -12,10 +13,10 @@ import java.time.format.DateTimeFormatter;
 
 public class UpsStatusDeserializerTest {
 
-    private Gson gson;
+    private static Gson gson;
 
-    @BeforeEach
-    public void setup() {
+    @BeforeAll
+    public static void setup() {
         gson = new GsonBuilder()
                 .registerTypeAdapter(UpsStatus.class, new UpsStatusDeserializer())
                 .excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT)
