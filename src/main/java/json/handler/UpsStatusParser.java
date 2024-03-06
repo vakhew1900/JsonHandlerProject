@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UpsStatusParser {
 
-    public List<UpsStatus> parse(String fileName){
+    public static List<UpsStatus> parse(String fileName){
         try(FileReader reader = new FileReader(fileName)) {
             TypeToken<ArrayList<UpsStatus>> typeToken = new TypeToken<>() {
             };
@@ -23,7 +23,7 @@ public class UpsStatusParser {
         }
     }
 
-    private Gson getGson(){
+    public static Gson getGson(){
         return new GsonBuilder()
                 .registerTypeAdapter(UpsStatus.class, new UpsStatusDeserializer())
                 .excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT)
