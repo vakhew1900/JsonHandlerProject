@@ -5,15 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>JsonHandlerProject</artifactId>
+    <artifactId>UpsStatusHandler</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.30</lombok.version>
+        <opensearch.version>1.0.0</opensearch.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,25 @@
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.opensearch</groupId>-->
+<!--            <artifactId>opensearch-core</artifactId>-->
+<!--            <version>${opensearch.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.opensearch.client</groupId>-->
+<!--            <artifactId>opensearch-rest-high-level-client</artifactId>-->
+<!--            <version>${opensearch.version}</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; OpenSearch Java REST Client &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.opensearch.client</groupId>-->
+<!--            <artifactId>opensearch-rest-client</artifactId>-->
+<!--            <version>${opensearch.version}</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
